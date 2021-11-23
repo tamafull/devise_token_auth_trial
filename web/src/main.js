@@ -1,8 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import axios from 'axios'
+import router from './router'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(router)
+app.mount('#app')
 
 if (process.env.NODE_ENV === 'production') {
   // TODO: Change after initial deploy.
@@ -10,3 +13,4 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   axios.defaults.baseURL = 'http://localhost:3000';
 }
+
