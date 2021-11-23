@@ -1,9 +1,9 @@
 <template>
   <form @submit.prevent="login">
     <span>メールアドレス:</span>
-    <input v-model="email.data"><br>
+    <input v-model="email"><br>
     <span>パスワード:</span>
-    <input v-model="password.data"><br>
+    <input v-model="password"><br>
     <button type="submit">ログイン</button><br>
   </form>
 </template>
@@ -23,8 +23,8 @@ export default {
     login: function () {
       axios
         .post(`/api/v1/auth/sign_in`, {
-          email: this.email.data,
-          password: this.password.data
+          email: this.email,
+          password: this.password
         })
         .catch(function (error) {
           console.log(error);
