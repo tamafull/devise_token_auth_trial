@@ -19,15 +19,27 @@ export default {
       password: ''
     }
   },
+  created: function(){
+    const token = JSON.parse(localStorage.getItem(process.env.VUE_APP_TOKEN_NAME))
+    console.log(token) // TODO: 認証済みならHomeに遷移したい
+  },
   methods: {
     login: function () {
       axios
         .post(`/api/v1/auth/sign_in`, {
           email: this.email,
           password: this.password
-        })
-        .catch(function (error) {
-          console.log(error);
+        }).then(response => {
+          const token = JSON.stringify({
+            'Content-Type': 'application/json',
+            'access-token': response.headers['access-token'],
+            'client': response.headers['client'],
+            'uid': response.headers['uid']
+          })
+
+          localStorage.setItem(process.env.VUE_APP_TOKEN_NAME, token)
+        }).catch(function (error) {
+          console.log(error) // TODO: ログイン失敗時のメッセージを画面に表示する
         })
     }
   }

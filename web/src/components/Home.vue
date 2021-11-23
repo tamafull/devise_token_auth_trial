@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div class="home">
+    <h1> Home </h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -31,11 +31,19 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'Home',
+  created: function(){
+    axios
+      .get(`/api/v1/home`, {
+        headers: JSON.parse(localStorage.getItem(process.env.VUE_APP_TOKEN_NAME))
+      }).catch(function () {
+        console.log('Please login first')// TODO: Loginにエラーメッセージとして表示したい
+        window.location.href = "login" // TODO: Router使いたい
+      })
+  },
 }
 </script>
 

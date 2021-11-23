@@ -3,7 +3,9 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <div id="nav" class="header-area">
       <ul class="header-menu">
+        <!-- TODO: 一旦全routerを表示しておく。後で削除。 -->
         <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/login">Login</router-link></li>
       </ul>
     </div>
     <router-view />
