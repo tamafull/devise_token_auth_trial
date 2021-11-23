@@ -9,6 +9,8 @@ Rails.application.routes.draw do
         sessions:           'api/v1/auth/sessions',
         # token_validations:  'devise_token_auth/token_validations'
       }
+
+      get 'home', to: 'home#index'
     end
   end
 end
