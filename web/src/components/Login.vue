@@ -21,7 +21,14 @@ export default {
   },
   created: function(){
     const token = JSON.parse(localStorage.getItem(process.env.VUE_APP_TOKEN_NAME))
-    console.log(token) // TODO: 認証済みならHomeに遷移したい
+    axios
+      .get(`/api/v1/home`, {
+        headers: token
+      }).then(response => {
+        if (response.status == 200){
+          window.location.href = '/'
+        }
+      }) // TODO: 認証が通ることを確認するため、遷移後を含めHomeAPIを2回叩く。他の方法を探したい。
   },
   methods: {
     login: function () {
