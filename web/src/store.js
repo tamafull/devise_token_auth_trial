@@ -22,11 +22,17 @@ const mutations = {
   setToken(state, token) {
     state.token = token
   },
+  destroyToken(state) {
+    state.token = ''
+  },
 }
 
 const actions = {
   setToken({ commit }, value) {
     commit('setToken', value)
+  },
+  destroyToken({ commit }) {
+    commit('destroyToken')
   },
 }
 
