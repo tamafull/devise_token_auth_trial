@@ -20,10 +20,9 @@ export default {
     }
   },
   created: function(){
-    const token = JSON.parse(localStorage.getItem(process.env.VUE_APP_TOKEN_NAME))
     axios
       .get(`/api/v1/home`, {
-        headers: token
+        headers: this.$store.getters.token
       }).then(response => {
         if (response.status == 200){
           window.location.href = '/'
@@ -37,14 +36,12 @@ export default {
           email: this.email,
           password: this.password
         }).then(response => {
-          const token = JSON.stringify({
+          this.$store.dispatch('setToken', {
             'Content-Type': 'application/json',
             'access-token': response.headers['access-token'],
             'client': response.headers['client'],
             'uid': response.headers['uid']
           })
-
-          localStorage.setItem(process.env.VUE_APP_TOKEN_NAME, token)
         }).catch(function (error) {
           console.log(error) // TODO: ログイン失敗時のメッセージを画面に表示する
         })
