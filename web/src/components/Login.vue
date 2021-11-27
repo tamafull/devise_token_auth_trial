@@ -19,10 +19,6 @@ export default {
       password: ''
     }
   },
-  created: function(){
-    const token = JSON.parse(localStorage.getItem(process.env.VUE_APP_TOKEN_NAME))
-    console.log(token) // TODO: 認証済みならHomeに遷移したい
-  },
   methods: {
     login: function () {
       axios
@@ -30,14 +26,12 @@ export default {
           email: this.email,
           password: this.password
         }).then(response => {
-          const token = JSON.stringify({
+          this.$store.dispatch('setToken', {
             'Content-Type': 'application/json',
             'access-token': response.headers['access-token'],
             'client': response.headers['client'],
             'uid': response.headers['uid']
           })
-
-          localStorage.setItem(process.env.VUE_APP_TOKEN_NAME, token)
         }).catch(function (error) {
           console.log(error) // TODO: ログイン失敗時のメッセージを画面に表示する
         })

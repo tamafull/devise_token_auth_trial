@@ -38,10 +38,9 @@ export default {
   created: function(){
     axios
       .get(`/api/v1/home`, {
-        headers: JSON.parse(localStorage.getItem(process.env.VUE_APP_TOKEN_NAME))
-      }).catch(function () {
-        console.log('Please login first')// TODO: Loginにエラーメッセージとして表示したい
-        window.location.href = "login" // TODO: Router使いたい
+        headers: this.$store.getters.token
+      }).catch(function (error) {
+        console.log(error)
       })
   },
 }
