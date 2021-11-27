@@ -6,6 +6,7 @@
         <!-- TODO: 一旦全routerを表示しておく。後で削除。 -->
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/login">Login</router-link></li>
+        <li><router-link to="/logout">Logout</router-link></li>
       </ul>
     </div>
     <router-view />
