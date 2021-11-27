@@ -19,16 +19,6 @@ export default {
       password: ''
     }
   },
-  created: function(){
-    axios
-      .get(`/api/v1/home`, {
-        headers: this.$store.getters.token
-      }).then(response => {
-        if (response.status == 200){
-          window.location.href = '/'
-        }
-      }) // TODO: 認証が通ることを確認するため、遷移後を含めHomeAPIを2回叩く。他の方法を探したい。
-  },
   methods: {
     login: function () {
       axios

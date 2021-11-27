@@ -39,9 +39,8 @@ export default {
     axios
       .get(`/api/v1/home`, {
         headers: this.$store.getters.token
-      }).catch(function () {
-        console.log('Please login first')// TODO: Loginにエラーメッセージとして表示したい
-        window.location.href = "login" // TODO: Router使いたい
+      }).catch(function (error) {
+        console.log(error)
       })
   },
 }
