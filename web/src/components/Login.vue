@@ -32,6 +32,7 @@ export default {
             'client': response.headers['client'],
             'uid': response.headers['uid']
           })
+          this.$router.push('/')
         }).catch(function (error) {
           console.log(error) // TODO: ログイン失敗時のメッセージを画面に表示する
         })
