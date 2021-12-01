@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <div id="nav" class="header-area">
       <ul class="header-menu">
         <!-- TODO: 一旦全routerを表示しておく。後で削除。 -->
@@ -20,6 +19,20 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
+.header-area {
+  background-color: #deffef;
+}
+
+.header-menu {
+  display: flex;
+  list-style-type: none;
+}
+
+li {
+  display: block;
+  padding: 1.5rem 1rem;
+}
+
 </style>
