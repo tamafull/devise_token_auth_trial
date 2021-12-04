@@ -81,9 +81,11 @@ dl {
 dt {
   width: 120px;
   padding: 5px;
+  margin: 0;
 }
 dd {
   padding: 5px;
+  margin: 0;
 }
 .error {
   text-align: left;

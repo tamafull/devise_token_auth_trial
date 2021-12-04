@@ -58,10 +58,12 @@ dl {
 dt {
   width: 110px;
   padding: 5px;
+  margin: 0;
 }
 
 dd {
   width: 110px;
   padding: 5px;
+  margin: 0;
 }
 </style>
