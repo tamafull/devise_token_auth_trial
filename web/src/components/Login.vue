@@ -1,9 +1,13 @@
 <template>
   <form @submit.prevent="login">
-    <span>メールアドレス:</span>
-    <input v-model="email"><br>
-    <span>パスワード:</span>
-    <input v-model="password"><br>
+    <dl>
+      <dt>メールアドレス</dt>
+      <dd><input v-model="email"></dd>
+    </dl>
+    <dl>
+      <dt>パスワード</dt>
+      <dd><input v-model="password"></dd>
+    </dl>
     <button type="submit">ログイン</button><br>
   </form>
 </template>
@@ -42,5 +46,19 @@ export default {
 </script>
 
 <style scoped>
+dl {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
 
+dt {
+  width: 110px;
+  padding: 5px;
+}
+
+dd {
+  width: 110px;
+  padding: 5px;
+}
 </style>
