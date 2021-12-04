@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="login">
+    <pre>{{ message }}</pre>
     <dl>
       <dt>メールアドレス</dt>
       <dd><input v-model="email"></dd>
@@ -20,11 +21,13 @@ export default {
   data: function () {
     return {
       email: '',
-      password: ''
+      password: '',
+      message: ' ',
     }
   },
   methods: {
     login: function () {
+      console.log(this)
       axios
         .post(`/api/v1/auth/sign_in`, {
           email: this.email,
@@ -37,8 +40,9 @@ export default {
             'uid': response.headers['uid']
           })
           this.$router.push('/')
-        }).catch(function (error) {
-          console.log(error) // TODO: ログイン失敗時のメッセージを画面に表示する
+        }).catch((error) => {
+          if (error.response.status == 401) this.message = 'メールアドレスかパスワードが間違っています'
+          else console.log(error)
         })
     }
   }

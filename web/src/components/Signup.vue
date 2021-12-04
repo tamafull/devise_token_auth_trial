@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="signup">
+    <pre>{{ message }}</pre>
     <dl>
       <dt>メールアドレス</dt>
       <dd><input v-model="email"></dd>
@@ -25,7 +26,8 @@ export default {
     return {
       email: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      message: ' ',
     }
   },
   methods: {
@@ -43,8 +45,9 @@ export default {
             'uid': response.headers['uid']
           })
           this.$router.push('/')
-        }).catch(function (error) {
-          console.log(error) // TODO: 登録失敗時のメッセージを画面に表示する
+        }).catch((error) => {
+          if (error.response.status == 422) this.message = '入力に誤りがあります'
+          else console.log(error)
         })
     }
   }
