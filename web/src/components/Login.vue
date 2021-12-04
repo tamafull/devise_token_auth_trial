@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     login: function () {
-      console.log(this)
       axios
         .post(`/api/v1/auth/sign_in`, {
           email: this.email,
